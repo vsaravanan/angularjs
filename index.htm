@@ -50,7 +50,7 @@
         </tr>
         <tr>
           <td>Name:</td>
-          <td>{{ student.fullName() | uppercase }}</td>
+          <td>{{ student.fullName() | myUpperCase }}</td>
         </tr>
         <tr>
           <td>Subject:</td>
@@ -72,13 +72,13 @@
       </table>
     </div>
     <script>
-      var myapp = angular.module("myapp", [
+      var app = angular.module("myapp", [
         // Angular modules
         // Custom modules
         // 3rd Party Modules
       ]);
       // var mainApp = angular.module("mainApp", []);
-      myapp.controller("studentController", function($scope) {
+      app.controller("studentController", function($scope) {
         $scope.student = {
           firstName: "Mahesh",
           lastName: "Parashar",
@@ -107,6 +107,16 @@
 
         //$scope.newvalue();
       });
+
+      function filterMyUpperCase() {
+        return filterMyUpperCase;
+
+        function filterMyUpperCase(input) {
+          return input.toUpperCase();
+        }
+      }
+
+      app.filter("myUpperCase", filterMyUpperCase);
     </script>
   </body>
 </html>
