@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>AngularJS First Application</title>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/jquery-3.4.1.js"></script>
+
+    <script>
+      var app = angular.module("myapp", []);
+
+      function One($scope) {
+        $scope.title = "OOO";
+        $scope.parentmethod = function() {
+          $scope.title = "One";
+        };
+      }
+      function Two($scope) {
+        $scope.title = "TTT";
+        $scope.childmethod = function() {
+          $scope.title = "Two";
+          $scope.$parent.parentmethod();
+        };
+      }
+
+      app.controller("One", One);
+      app.controller("Two", Two);
+    </script>
+  </head>
+
+  <body ng-app="myapp">
+    <div ng-controller="One">
+      <h2>Title of parent: {{ title }}</h2>
+      <button ng-click="parentmethod()">Parent method</button>
+
+      <div ng-controller="Two">
+        <h2>Title of child: {{ title }}</h2>
+        <button ng-click="childmethod()">Child method</button>
+      </div>
+    </div>
+  </body>
+</html>
