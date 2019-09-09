@@ -50,7 +50,7 @@
         </tr>
         <tr>
           <td>Name:</td>
-          <td>{{ student.fullName() | myUpperCase }}</td>
+          <td>{{ student.fullName() | filterAdded }}</td>
         </tr>
         <tr>
           <td>Subject:</td>
@@ -108,15 +108,10 @@
         //$scope.newvalue();
       });
 
-      function filterMyUpperCase() {
-        return filterMyUpperCase;
+      var add = input => input + " filter further added ";
+      var addptr = () => add;
 
-        function filterMyUpperCase(input) {
-          return input.toUpperCase();
-        }
-      }
-
-      app.filter("myUpperCase", filterMyUpperCase);
+      app.filter("filterAdded", addptr);
     </script>
   </body>
 </html>
